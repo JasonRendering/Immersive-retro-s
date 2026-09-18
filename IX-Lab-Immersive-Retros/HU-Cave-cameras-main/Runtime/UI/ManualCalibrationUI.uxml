@@ -1,0 +1,38 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.hu.cavecameras/Runtime/UI/ManualCalibrationUI.uss?fileID=7433441132597879392&amp;guid=4881c2f0001074840a612232d6a6bc6b&amp;type=3#ManualCalibrationUI"/>
+    <ui:VisualElement data-source="project://database/Packages/com.hu.cavecameras/Runtime/ScriptableObjects/CaveData.asset?fileID=11400000&amp;guid=82f984ecb29ccb643b7dc0878f8c8d5d&amp;type=2#CaveData" class="panel-root" style="flex-shrink: initial; flex-grow: initial; width: 378px;">
+        <ui:Foldout text="Cave Setup" value="true" data-source="project://database/Packages/com.hu.cavecameras/Runtime/ScriptableObjects/CaveData.asset?fileID=11400000&amp;guid=82f984ecb29ccb643b7dc0878f8c8d5d&amp;type=2#CaveData" class="section-foldout">
+            <ui:Vector3Field label="Cave Offset" data-source-path="CaveCenter" binding-path="CaveCenter" class="field-vector" style="height: 157px;">
+                <Bindings>
+                    <ui:DataBinding property="value" binding-mode="TwoWay" update-trigger="OnSourceChanged"/>
+                </Bindings>
+            </ui:Vector3Field>
+            <ui:Vector3Field label="Cave Size" data-source-path="CaveSize" binding-path="CaveSize" name="CaveSize" class="field-vector" style="height: 162px;">
+                <Bindings>
+                    <ui:DataBinding property="value" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:Vector3Field>
+            <ui:FloatField label="Eye Height" value="42.2" data-source-path="EyeHeight" class="field-float">
+                <Bindings>
+                    <ui:DataBinding property="value" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:Button text="Recalculate Cameras" name="RecalculateCamera" class="btn-action"/>
+        </ui:Foldout>
+        <ui:Foldout text="Display Output Order" value="true" class="section-foldout">
+            <ui:Label text="Assign cameras to physical display outputs." class="section-hint" style="font-size: 12px;"/>
+            <ui:VisualElement class="compass-rose">
+                <ui:Button text="▲  FORWARD" name="DisplayForward" class="btn-direction btn-direction-wide compass-top"/>
+                <ui:VisualElement class="compass-middle">
+                    <ui:Button text="◄  LEFT" name="DisplayLeft" class="btn-direction btn-direction-side"/>
+                    <ui:VisualElement class="compass-center">
+                        <ui:Label text="360°" class="compass-center-label"/>
+                    </ui:VisualElement>
+                    <ui:Button text="RIGHT  ►" name="DisplayRight" class="btn-direction btn-direction-side"/>
+                </ui:VisualElement>
+                <ui:Button text="▼  BACKWARD" name="DisplayBackward" class="btn-direction btn-direction-wide"/>
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Button text="Save Cave Data" name="SaveCaveData" class="btn-save" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+    </ui:VisualElement>
+</ui:UXML>

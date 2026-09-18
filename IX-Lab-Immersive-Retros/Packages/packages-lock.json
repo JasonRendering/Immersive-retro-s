@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.hu.cavecameras": {
-      "version": "file:C:/Users/Joran de Vries/Desktop/HU-Cave-cameras-main",
+      "version": "file:../HU-Cave-cameras-main",
       "depth": 0,
       "source": "local",
       "dependencies": {}

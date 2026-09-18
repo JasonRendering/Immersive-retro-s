@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.hu.cavecameras": "file:C:/Users/Joran de Vries/Desktop/HU-Cave-cameras-main",
+    "com.hu.cavecameras": "file:../HU-Cave-cameras-main",
     "com.unity.ai.navigation": "2.0.14",
     "com.unity.collab-proxy": "2.13.6",
     "com.unity.ide.rider": "3.0.38",
