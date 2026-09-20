@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 614a3d8218d370d40895a63854c838b3, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4468cf691a0d9e74183ca9beb3c7c990, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521864668886141137, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 1.7516252
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824155012187730234, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 2.3186328
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007320725725534317, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_FadeMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3089722969049224978, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_Name
       value: UNS_Water_Detailed
@@ -137,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 27.4
       objectReference: {fileID: 0}
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalScale.z
@@ -145,15 +157,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1197
+      value: 861.7
       objectReference: {fileID: 0}
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -98
+      value: -100.6
       objectReference: {fileID: 0}
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1702
+      value: 1886
       objectReference: {fileID: 0}
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalRotation.w
@@ -182,6 +194,22 @@ PrefabInstance:
     - target: {fileID: 4454668921102459321, guid: cdafd6d66f108e740a95731699638c87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189167512555668855, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 1.1662654
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744695253201300598, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744695253201300598, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744695253201300598, guid: cdafd6d66f108e740a95731699638c87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -425,7 +453,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.HUCaveCameras::CaveCameraManager
   caveData: {fileID: 11400000, guid: 82f984ecb29ccb643b7dc0878f8c8d5d, type: 2}
   uiDocument: {fileID: 655093002}
-  cameras: []
+  cameras:
+  - {fileID: 1114613232}
+  - {fileID: 989099038}
+  - {fileID: 483476104}
+  - {fileID: 1715214420}
 --- !u!4 &917640744
 Transform:
   m_ObjectHideFlags: 0
@@ -1020,11 +1052,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: a86e71163178e534b91625ff2705243f, type: 2}
-  m_TreeDistance: 2000
+  m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
+  m_TreeCrossFadeLength: 50
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 1000
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 1
   m_SplatMapDistance: 2000
