@@ -14,7 +14,7 @@ public class CaveCameraManager : MonoBehaviour
     private void Start()
     {
 #if !UNITY_EDITOR
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Display.displays.Length; i++)
         {
             Display.displays[i].Activate();
         }
