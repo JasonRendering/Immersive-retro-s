@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Unity.HUCaveCameras.csproj" />
+  <Project Path="Unity.HUCaveCameras.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>
