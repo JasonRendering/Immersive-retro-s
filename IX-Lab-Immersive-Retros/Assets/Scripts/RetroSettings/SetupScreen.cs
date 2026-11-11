@@ -15,6 +15,7 @@ public class ThemeOption
 {
     public string name;   // e.g. "Ruimte"
     public Sprite image;  // picture shown on the button
+    public string sceneName; // scene that opens when this theme is chosen
 }
 
 public class SetupScreen : MonoBehaviour
@@ -34,9 +35,6 @@ public class SetupScreen : MonoBehaviour
     [Header("Colours")]
     [SerializeField] private Color normalColor = Color.white;
     [SerializeField] private Color selectedColor = new Color(1f, 0.8f, 0.2f);
-
-    [Header("Next scene")]
-    [SerializeField] private string nextSceneName = "GameScene";
 
     private readonly List<SelectButton> methodButtons = new List<SelectButton>();
     private readonly List<SelectButton> themeButtons = new List<SelectButton>();
@@ -93,8 +91,16 @@ public class SetupScreen : MonoBehaviour
 
     private void OnStartClicked()
     {
+        ThemeOption theme = themes[selectedTheme];
+
+        if (string.IsNullOrEmpty(theme.sceneName))
+        {
+            Debug.LogError($"Theme '{theme.name}' has no scene name filled in!");
+            return;
+        }
+
         SetupData.Method = methods[selectedMethod];
-        SetupData.Theme = themes[selectedTheme].name;
-        SceneManager.LoadScene(nextSceneName);
+        SetupData.Theme = theme.name;
+        SceneManager.LoadScene(theme.sceneName);
     }
 }
