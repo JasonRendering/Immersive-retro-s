@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,10 +12,17 @@ public static class SetupData
 }
 
 [System.Serializable]
+public class MethodOption
+{
+    public string name;                 // text on the button
+    [TextArea] public string description; // shown when hovering
+}
+
+[System.Serializable]
 public class ThemeOption
 {
-    public string name;   // e.g. "Ruimte"
-    public Sprite image;  // picture shown on the button
+    public string name;      // e.g. "Ruimte"
+    public Sprite image;     // picture shown on the button
     public string sceneName; // scene that opens when this theme is chosen
 }
 
@@ -28,8 +36,13 @@ public class SetupScreen : MonoBehaviour
     [SerializeField] private SelectButton buttonPrefab;
     [SerializeField] private Button startButton;
 
+    [Header("Tooltip (direct child of the Canvas)")]
+    [SerializeField] private GameObject tooltipPanel;
+    [SerializeField] private TMP_Text tooltipText;
+    [SerializeField] private float tooltipOffset = 20f;
+
     [Header("Options (edit in the Inspector)")]
-    [SerializeField] private List<string> methods = new List<string> { "Methode 1", "Methode 2", "Methode 3" };
+    [SerializeField] private List<MethodOption> methods = new List<MethodOption>();
     [SerializeField] private List<ThemeOption> themes = new List<ThemeOption>();
 
     [Header("Colours")]
@@ -41,14 +54,26 @@ public class SetupScreen : MonoBehaviour
     private int selectedMethod = -1;
     private int selectedTheme = -1;
 
+    private RectTransform tooltipRect;
+    private RectTransform canvasRect;
+
     private void Start()
     {
-        // Methode buttons (text only)
+        tooltipRect = (RectTransform)tooltipPanel.transform;
+        canvasRect = (RectTransform)tooltipPanel.GetComponentInParent<Canvas>().rootCanvas.transform;
+        tooltipPanel.SetActive(false);
+
+        // Methode buttons (text + hover description)
         for (int i = 0; i < methods.Count; i++)
         {
             int index = i; // copy so the click remembers its own index
             SelectButton b = Instantiate(buttonPrefab, methodContainer);
-            b.Setup(methods[i], null, () => SelectMethod(index));
+            RectTransform rect = (RectTransform)b.transform;
+
+            b.Setup(methods[i].name, null,
+                    () => SelectMethod(index),
+                    () => ShowTooltip(methods[index].description, rect),
+                    HideTooltip);
             methodButtons.Add(b);
         }
 
@@ -89,6 +114,56 @@ public class SetupScreen : MonoBehaviour
         startButton.interactable = selectedMethod >= 0 && selectedTheme >= 0;
     }
 
+    // Shows the description box next to the hovered button, always fully on screen
+    private void ShowTooltip(string description, RectTransform target)
+    {
+        if (string.IsNullOrEmpty(description)) return;
+
+        tooltipText.text = description;
+        tooltipPanel.SetActive(true);
+        tooltipPanel.transform.SetAsLastSibling(); // draw on top of everything
+
+        // Make sure the box has its final size before we measure it
+        tooltipText.ForceMeshUpdate();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(tooltipRect);
+
+        Vector3[] button = new Vector3[4];
+        target.GetWorldCorners(button);
+        Vector3 rightMiddle = (button[2] + button[3]) / 2f;
+        Vector3 leftMiddle = (button[0] + button[1]) / 2f;
+
+        Vector3[] screen = new Vector3[4];
+        canvasRect.GetWorldCorners(screen);
+
+        // 1. Try the right side of the button
+        tooltipRect.position = rightMiddle + Vector3.right * tooltipOffset;
+
+        Vector3[] tip = new Vector3[4];
+        tooltipRect.GetWorldCorners(tip);
+
+        // 2. Doesn't fit on the right? Flip to the left side
+        if (tip[2].x > screen[2].x)
+        {
+            float width = tip[2].x - tip[0].x;
+            tooltipRect.position = leftMiddle + Vector3.left * (tooltipOffset + width);
+            tooltipRect.GetWorldCorners(tip);
+        }
+
+        // 3. Still sticking out (or too high/low)? Nudge it back inside
+        Vector3 shift = Vector3.zero;
+        if (tip[0].x < screen[0].x) shift.x = screen[0].x - tip[0].x;
+        else if (tip[2].x > screen[2].x) shift.x = screen[2].x - tip[2].x;
+        if (tip[0].y < screen[0].y) shift.y = screen[0].y - tip[0].y;
+        else if (tip[2].y > screen[2].y) shift.y = screen[2].y - tip[2].y;
+
+        tooltipRect.position += shift;
+    }
+
+    private void HideTooltip()
+    {
+        tooltipPanel.SetActive(false);
+    }
+
     private void OnStartClicked()
     {
         ThemeOption theme = themes[selectedTheme];
@@ -99,7 +174,7 @@ public class SetupScreen : MonoBehaviour
             return;
         }
 
-        SetupData.Method = methods[selectedMethod];
+        SetupData.Method = methods[selectedMethod].name;
         SetupData.Theme = theme.name;
         SceneManager.LoadScene(theme.sceneName);
     }
