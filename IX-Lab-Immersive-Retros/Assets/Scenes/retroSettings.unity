@@ -277,7 +277,7 @@ MonoBehaviour:
   tooltipOffset: 20
   methods:
   - name: 4L Methode
-    description: beschrijving
+    description: 'De 4L-methode is een retrospectieve werkvorm waarbij het team terugblikt op een afgelopen periode aan de hand van vier vragen: Liked, Learned, Lacked en Longed for. Hiermee bespreekt het team wat goed ging, wat het heeft geleerd, wat ontbrak en wat het graag anders of meer zou willen zien.'
   - name: methode 2
     description: beschrijving 2
   - name: methode 3
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
