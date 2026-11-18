@@ -8,10 +8,10 @@ public class RetrospectiveManager : MonoBehaviour
     public enum Phase
     {
         Introduction,
-        Brainstorm,
-        Discussion,
-        Voting,
-        Results,
+        Liked,
+        Learned,
+        Lacked,
+        LongedFor,
         Finished
     }
 
@@ -110,25 +110,25 @@ public class RetrospectiveManager : MonoBehaviour
             case Phase.Introduction:
                 return "Welkom bij de Retrospective!";
 
-            case Phase.Brainstorm:
+            case Phase.Liked:
                 return screen == 1
-                    ? "Brainstorm\nVoeg ideeën toe."
-                    : "De brainstorm is bezig.";
+                    ? "Liked\nWat ging goed?"
+                    : "Deel wat je goed vond.";
 
-            case Phase.Discussion:
+            case Phase.Learned:
                 return screen == 2
-                    ? "Discussie\nBespreek de ideeën."
-                    : "De discussie is bezig.";
+                    ? "Learned\nWat heb je geleerd?"
+                    : "Deel wat je hebt geleerd.";
 
-            case Phase.Voting:
+            case Phase.Lacked:
                 return screen == 3
-                    ? "Voting\nBreng je stem uit."
-                    : "Er kan gestemd worden.";
+                    ? "Lacked\nWat ontbrak er?"
+                    : "Deel wat er ontbrak.";
 
-            case Phase.Results:
+            case Phase.LongedFor:
                 return screen == 4
-                    ? "Resultaten\nBekijk de uitslag."
-                    : "De stemming is afgelopen.";
+                    ? "Longed for\nWat had je graag gewild?"
+                    : "Deel wat je graag had gewild.";
 
             case Phase.Finished:
                 return "De Retrospective is afgelopen!";
