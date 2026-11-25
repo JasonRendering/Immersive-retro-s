@@ -139639,6 +139639,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gameloop
       objectReference: {fileID: 0}
+    - target: {fileID: 2697754507862117578, guid: 361bb68e22659d8468290eb9cc73253d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707391876149701289, guid: 361bb68e22659d8468290eb9cc73253d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564313407728297514, guid: 361bb68e22659d8468290eb9cc73253d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8162576431448947677, guid: 361bb68e22659d8468290eb9cc73253d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -139690,6 +139702,10 @@ PrefabInstance:
     - target: {fileID: 8162576431448947677, guid: 361bb68e22659d8468290eb9cc73253d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026522260758609924, guid: 361bb68e22659d8468290eb9cc73253d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
