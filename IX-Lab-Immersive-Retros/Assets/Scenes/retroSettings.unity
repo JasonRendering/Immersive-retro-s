@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 129242430}
   - component: {fileID: 129242431}
   m_Layer: 0
-  m_Name: EmptyObject
+  m_Name: Settings Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,13 +287,13 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: a5fbda7073f30f4429945dbd00a14d6a, type: 3}
     sceneName: EuropeanCity
   - name: Backrooms
-    image: {fileID: 21300000, guid: 7405a26a45a5a5049999a52d5ed4dc5e, type: 3}
+    image: {fileID: 21300000, guid: a5fbda7073f30f4429945dbd00a14d6a, type: 3}
     sceneName: backroomsScene
   - name: Kelder
-    image: {fileID: 21300000, guid: 1e6a7b6efacb4b544ab60e867c7a57aa, type: 3}
+    image: {fileID: 21300000, guid: a5fbda7073f30f4429945dbd00a14d6a, type: 3}
     sceneName: Contoria
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.8, b: 0.2, a: 1}
+  selectedColor: {r: 0.28987536, g: 0.37051356, b: 0.4641509, a: 1}
 --- !u!1 &182583349
 GameObject:
   m_ObjectHideFlags: 0
